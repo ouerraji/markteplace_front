@@ -1,0 +1,107 @@
+<div class="container mt-5">
+  <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+    <!-- User Information Fields -->
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" [(ngModel)]="user.username" name="username" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password" required>
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" class="form-control" id="confirmPassword" [(ngModel)]="user.confirmPassword" name="confirmPassword" required>
+    </div>
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text" class="form-control" id="fullName" [(ngModel)]="user.fullName" name="fullName" required>
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" class="form-control" id="phoneNumber" [(ngModel)]="user.phoneNumber" name="phoneNumber" required>
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text" class="form-control" id="address" [(ngModel)]="user.address" name="address" required>
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input type="text" class="form-control" id="city" [(ngModel)]="user.city" name="city" required>
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <input type="text" class="form-control" id="state" [(ngModel)]="user.state" name="state" required>
+    </div>
+    <div class="form-group">
+      <label for="zipCode">Zip Code</label>
+      <input type="text" class="form-control" id="zipCode" [(ngModel)]="user.zipCode" name="zipCode" required>
+    </div>
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input type="text" class="form-control" id="country" [(ngModel)]="user.country" name="country" required>
+    </div>
+    <div class="form-group">
+      <label for="role">Role</label>
+      <select class="form-control" id="role" [(ngModel)]="user.role" name="role" required>
+        <option value="USER">User</option>
+        <option value="ADMIN">Admin</option>
+      </select>
+    </div>
+    
+    <!-- Show User Type only if Role is User -->
+    <div *ngIf="user.role === 'USER'" class="form-group">
+      <label for="userType">User Type</label>
+      <select class="form-control" id="userType" [(ngModel)]="user.userType" name="userType" required>
+        <option value="B2B">Company (B2B)</option>
+        <option value="B2C">Individual (B2C)</option>
+      </select>
+    </div>
+
+    <!-- Fields specific to B2B -->
+    <div *ngIf="user.role === 'USER' && user.userType === 'B2B'">
+      <div class="form-group">
+        <label for="companyName">Company Name</label>
+        <input type="text" class="form-control" id="companyName" [(ngModel)]="user.companyName" name="companyName" required>
+      </div>
+      <div class="form-group">
+        <label for="businessType">Business Type</label>
+        <input type="text" class="form-control" id="businessType" [(ngModel)]="user.businessType" name="businessType" required>
+      </div>
+      <div class="form-group">
+        <label for="companyAddress">Company Address</label>
+        <input type="text" class="form-control" id="companyAddress" [(ngModel)]="user.companyAddress" name="companyAddress" required>
+      </div>
+      <div class="form-group">
+        <label for="companyCity">Company City</label>
+        <input type="text" class="form-control" id="companyCity" [(ngModel)]="user.companyCity" name="companyCity" required>
+      </div>
+      <div class="form-group">
+        <label for="companyState">Company State</label>
+        <input type="text" class="form-control" id="companyState" [(ngModel)]="user.companyState" name="companyState" required>
+      </div>
+      <div class="form-group">
+        <label for="companyZipCode">Company Zip Code</label>
+        <input type="text" class="form-control" id="companyZipCode" [(ngModel)]="user.companyZipCode" name="companyZipCode" required>
+      </div>
+      <div class="form-group">
+        <label for="companyCountry">Company Country</label>
+        <input type="text" class="form-control" id="companyCountry" [(ngModel)]="user.companyCountry" name="companyCountry" required>
+      </div>
+      <div class="form-group">
+        <label for="companyPhoneNumber">Company Phone Number</label>
+        <input type="text" class="form-control" id="companyPhoneNumber" [(ngModel)]="user.companyPhoneNumber" name="companyPhoneNumber" required>
+      </div>
+      <div class="form-group">
+        <label for="vatNumber">VAT Number</label>
+        <input type="text" class="form-control" id="vatNumber" [(ngModel)]="user.vatNumber" name="vatNumber" required>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  </form>
+</div>
